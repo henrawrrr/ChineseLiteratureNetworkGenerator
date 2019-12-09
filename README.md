@@ -1,6 +1,7 @@
 # ChineseLiteratureNetworkGenerator
 
 One of the greatest challenges I faced while reading Romance of the Three Kingdoms was the numerous characters and how their motives exactly fit into the progression of the story. The vast number of characters led to a highly saturated field of important people and each person’s relationship with another person was confusing at times. So, in order to better analyze and understand stories like these, I want to produce a visual summary directly from the narrative. Some machine learning techniques I plan to use are entity recognition, sentiment analysis, and syntactic parsing. 
+
 Process:
 
 ![Process Visualization](process.jpg)
@@ -13,3 +14,11 @@ With this codex we parse again through the resolved reference text and locate se
 We have an adjacency matrix where the axis are people and change their edge value to add the sentiment value. Thus largely negative values show a negative relationship and positive values show a positive relationship. We do not want neutral interactions to really affect scores so we will keep them at 0. We use NetworkX to create a graph visualization of the adjacency matrix and relabel the nodes with our codex. 
 
 ![Chapter 1 Graph](ch1graph.png)
+
+Obstacles:
+
+Much of the python wrapper has outdated or redacted functions and had to be reprogrammed to make sure the server connected with our client properly. Additionally, the documentation is fairly poor at providing information on the multitude of different client connection methods. The Python wrapper was fairly limited in actual functionality as most of it is Java. However, when attempting to set up the Java version, I ran into many issues with timeout errors and incompatible dependencies. Another obstacle was the fact that each sentiment run took around 30 minutes to parse through the text. The server often would just time out whenever connection was lost. 
+
+Future Works:
+
+Currently coreferent mention chains are just located through a simple checker that only looks at the first 2 characters ran into in a sentence. This is very limiting, but while attempting to search for all characters, the server would reject larger requests. 
